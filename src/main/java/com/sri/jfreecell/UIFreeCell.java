@@ -5,10 +5,8 @@ import static com.sri.jfreecell.event.MenuActionListener.MenuAction.EXIT;
 import static com.sri.jfreecell.event.MenuActionListener.MenuAction.HELP;
 import static com.sri.jfreecell.event.MenuActionListener.MenuAction.HINT;
 import static com.sri.jfreecell.event.MenuActionListener.MenuAction.NEW;
-import static com.sri.jfreecell.event.MenuActionListener.MenuAction.OPTIONS;
 import static com.sri.jfreecell.event.MenuActionListener.MenuAction.RESTART;
 import static com.sri.jfreecell.event.MenuActionListener.MenuAction.SELECT;
-import static com.sri.jfreecell.event.MenuActionListener.MenuAction.STATISTICS;
 import static com.sri.jfreecell.event.MenuActionListener.MenuAction.UNDO;
 import static com.sri.jfreecell.util.FileUtil.STATE_FILE;
 import static com.sri.jfreecell.util.FileUtil.*;
@@ -19,16 +17,12 @@ import static java.awt.event.KeyEvent.VK_A;
 import static java.awt.event.KeyEvent.VK_F1;
 import static java.awt.event.KeyEvent.VK_F2;
 import static java.awt.event.KeyEvent.VK_F3;
-import static java.awt.event.KeyEvent.VK_F4;
-import static java.awt.event.KeyEvent.VK_F5;
 import static java.awt.event.KeyEvent.VK_G;
 import static java.awt.event.KeyEvent.VK_H;
 import static java.awt.event.KeyEvent.VK_J;
 import static java.awt.event.KeyEvent.VK_N;
-import static java.awt.event.KeyEvent.VK_O;
 import static java.awt.event.KeyEvent.VK_R;
 import static java.awt.event.KeyEvent.VK_S;
-import static java.awt.event.KeyEvent.VK_T;
 import static java.awt.event.KeyEvent.VK_U;
 import static java.awt.event.KeyEvent.VK_X;
 import static java.awt.event.KeyEvent.VK_Z;
@@ -149,9 +143,6 @@ public class UIFreeCell extends JFrame {
         createMenuItem(menu, UNDO, VK_U, VK_Z, CTRL_MASK);
         createMenuItem(menu, HINT, VK_H, VK_H, 0);
         menu.addSeparator();
-        createMenuItem(menu, STATISTICS, VK_T, VK_F4, 0).setEnabled(false);
-        createMenuItem(menu, OPTIONS, VK_O, VK_F5, 0).setEnabled(false);
-        menu.addSeparator();
         createMenuItem(menu, EXIT, VK_X, VK_X, ALT_MASK);
 
         menu = new JMenu("Help");
@@ -218,6 +209,18 @@ public class UIFreeCell extends JFrame {
         panel.add(bLabel);
         showMessageDialog(this, panel, "About FreeCell", PLAIN_MESSAGE);
     }
+    
+    
+    //Criado tela de Ajuda
+    public void showHelp() {
+        JLabel aLabel = new JLabel("<html>Objetivo<br>O objetivo do FreeCell é criar quatro pilhas de cartas <br>nas bases do canto superior direito. Cada pilha deve ser <br>criada da menor à maior carta de cada naipe. </html>");
+        JLabel bLabel = new JLabel("<html>\u00a9 2016-17 Sateesh Chandra G<br>All rights reserved.</html>");
+        JPanel panel = new JPanel(new GridLayout(2, 1));
+        panel.add(aLabel);
+        panel.add(bLabel);
+        showMessageDialog(this, panel, "Como jogar FreeCell", PLAIN_MESSAGE);
+    }
+    
 
     /**
      * Checks if any other instance is already running.
@@ -253,7 +256,7 @@ public class UIFreeCell extends JFrame {
         System.exit(0);
     }
     
-    @Override
+	@Override
     protected void finalize() throws Throwable {
         super.finalize();
         if (socket != null && !socket.isClosed()) {

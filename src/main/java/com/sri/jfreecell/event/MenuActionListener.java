@@ -7,6 +7,7 @@ import static com.sri.jfreecell.event.MenuActionListener.MenuAction.SELECT;
 import static com.sri.jfreecell.event.MenuActionListener.MenuAction.NEW;
 import static com.sri.jfreecell.event.MenuActionListener.MenuAction.RESTART;
 import static com.sri.jfreecell.event.MenuActionListener.MenuAction.UNDO;
+import static com.sri.jfreecell.event.MenuActionListener.MenuAction.HELP;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +22,7 @@ import com.sri.jfreecell.UIFreeCell;
  */
 public class MenuActionListener implements ActionListener {
 
-    private UIFreeCell frame;
+	private UIFreeCell frame;
     
     public static class MenuAction {
         public static final String NEW = "New Game";
@@ -29,8 +30,6 @@ public class MenuActionListener implements ActionListener {
         public static final String RESTART = "Restart Game";
         public static final String UNDO = "Undo Step";
         public static final String HINT = "Hint";
-        public static final String STATISTICS = "Statistics";
-        public static final String OPTIONS = "Options";
         public static final String HELP = "JFree Cell Help";
         public static final String ABOUT = "About FreeCell";
         public static final String EXIT = "Exit";
@@ -55,6 +54,8 @@ public class MenuActionListener implements ActionListener {
 	    frame.exit(frame.model.getState().equals(GameEvents.COMPLETE));
 	} else if (evt.getActionCommand().equals(ABOUT)) {
 	    frame.showAbout();
+	} else if (evt.getActionCommand().equals(HELP)) {
+	    frame.showHelp();
 	}
     }
 
