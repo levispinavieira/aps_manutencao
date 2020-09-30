@@ -78,6 +78,7 @@ public class UIFreeCell extends JFrame {
 
     private UICardPanel boardDisplay;
     private JLabel cardCount;
+    private JLabel numeroJogadas;
 
     private static final int PORT = 6789;
     private static ServerSocket socket;
@@ -106,10 +107,16 @@ public class UIFreeCell extends JFrame {
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         controlPanel.add(new JLabel("Cartas restantes:"));
         controlPanel.add(cardCount);
+        
+        numeroJogadas = new JLabel("0", SwingConstants.LEFT);
+        JPanel controlPanel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        controlPanel1.add(new JLabel("Numero Jogadas:"));
+        controlPanel1.add(numeroJogadas);
 
         JPanel content = new JPanel();
         content.setLayout(new BorderLayout());
         content.add(controlPanel, BorderLayout.SOUTH);
+        content.add(controlPanel1, BorderLayout.EAST);
         content.add(boardDisplay, BorderLayout.CENTER);
 
         setContentPane(content);
@@ -168,6 +175,10 @@ public class UIFreeCell extends JFrame {
     public void updateCardCount(int count) {
         cardCount.setText(count + " ");
     }
+    
+    public void updateNumeroJogadas(int count) {
+        numeroJogadas.setText(count + " ");
+    }
 
     public void loadRandGame() {
         model.loadRandGame();
@@ -213,11 +224,23 @@ public class UIFreeCell extends JFrame {
     
     //Criado tela de Ajuda
     public void showHelp() {
+<<<<<<< HEAD
         JLabel aLabel = new JLabel("<html>Objetivo<br>O objetivo do FreeCell é criar quatro pilhas de cartas <br>nas bases do canto superior direito. Cada pilha deve ser <br>criada da menor à maior carta de cada naipe. </html>");
         JLabel bLabel = new JLabel("<html>\u00a9 2016-17 Sateesh Chandra G<br>Todos os direitos reservados.</html>");
         JPanel panel = new JPanel(new GridLayout(2, 1));
+=======
+    	String texto = "<html>Objetivo<br> - O objetivo do FreeCell é criar quatro pilhas de cartas nas bases do canto<br>superior direito.<br>"
+    					+"- Cada pilha deve ser criada da menor à maior carta de cada naipe, portanto<br>devem começar por ases e terminar por reis.<br>"
+    					+" - As cartas movidas para as pilhas bases não podem ser removidas.<br> - Na parte superior esquerda possui quatro espaços livres "
+    					+"onde você pode<br>armazenar temporariamente qualquer carta.<br> - Pode-se mover as cartas entre as colunas, porém as mesmas devem ser<br>"
+    					+"colocadas em ordem decrescente e alternar entre as cores vermelho e preto.<br> - Quando tiver uma coluna vazia, você pode mover qualquer "
+    					+"carta ou sequência<br>de cartas para ela.<br> - Mover uma pilha sequencial de cartas é o mesmo que movê-las individualmente<br>para "
+    					+"liberar espaços e depois de volta para o tabuleiro. Sendo assim, você pode<br>mover apenas pilhas sequenciais de cartas se tiver "
+    					+"espaços livres suficientes.</html>";
+        JLabel aLabel = new JLabel(texto);
+        JPanel panel = new JPanel(new GridLayout(1, 1));
+>>>>>>> a33f23f0565a1925ad0bac5d99c5248e601960db
         panel.add(aLabel);
-        panel.add(bLabel);
         showMessageDialog(this, panel, "Como jogar FreeCell", PLAIN_MESSAGE);
     }
     
