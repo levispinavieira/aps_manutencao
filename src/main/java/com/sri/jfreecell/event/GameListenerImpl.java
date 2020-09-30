@@ -22,7 +22,6 @@ import com.sri.jfreecell.UIFreeCell;
 public class GameListenerImpl implements GameListener {
 
     private UIFreeCell frame;
-
     public GameListenerImpl(UIFreeCell frame) {
         this.frame = frame;
     }
@@ -46,6 +45,7 @@ public class GameListenerImpl implements GameListener {
 
     private void onMove(GameEvent ge) {
         frame.updateCardCount((int) ge.getValue());
+        frame.updateNumeroJogadas(ge.getNumeroJogadas());
         frame.repaint();
     }
 
