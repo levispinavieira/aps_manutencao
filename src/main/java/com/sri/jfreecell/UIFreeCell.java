@@ -85,7 +85,7 @@ public class UIFreeCell extends JFrame {
     public static void main(String[] args) {
         checkIfRunning();
         try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+           // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -104,7 +104,7 @@ public class UIFreeCell extends JFrame {
 
         cardCount = new JLabel("52 ", SwingConstants.RIGHT);
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        controlPanel.add(new JLabel("Cards Left:"));
+        controlPanel.add(new JLabel("Cartas restantes:"));
         controlPanel.add(cardCount);
 
         JPanel content = new JPanel();
@@ -132,7 +132,7 @@ public class UIFreeCell extends JFrame {
 
     private JMenuBar createMenu() {
         JMenuBar menuBar = new JMenuBar();
-        JMenu menu = new JMenu("Game");
+        JMenu menu = new JMenu("Jogo");
         menu.setMnemonic(VK_G);
         menuBar.add(menu);
 
@@ -145,7 +145,7 @@ public class UIFreeCell extends JFrame {
         menu.addSeparator();
         createMenuItem(menu, EXIT, VK_X, VK_X, ALT_MASK);
 
-        menu = new JMenu("Help");
+        menu = new JMenu("Ajuda");
         menu.setMnemonic(VK_H);
         menuBar.add(menu);
 
@@ -179,10 +179,10 @@ public class UIFreeCell extends JFrame {
      */
     public void selectGame() {
         int gameNo = 1;
-        JLabel bLabel = new JLabel("Select a game number from 1 to 32000");
+        JLabel bLabel = new JLabel("Selecione um numero entre 1 e 32000");
         JPanel panel = new JPanel(new GridLayout(2, 1));
         panel.add(bLabel);
-        String userInput = showInputDialog(this, panel, "Game Number", PLAIN_MESSAGE);
+        String userInput = showInputDialog(this, panel, "Identificador do jogo", PLAIN_MESSAGE);
         if (userInput == null)
             return;
         try {
@@ -190,7 +190,7 @@ public class UIFreeCell extends JFrame {
             if (gameNo < 1 || gameNo > 32000)
                 throw new Exception();
         } catch (Exception e) {
-            showMessageDialog(this, "Invalid game number! Try again.");
+            showMessageDialog(this, "Numero inválido, Tente outro.");
             return;
         }
         setTitle("FreeCell #" + gameNo);
@@ -203,18 +203,18 @@ public class UIFreeCell extends JFrame {
     public void showAbout() {
         icon.setImage(ImageUtil.getScaledImage(icon.getImage(), 40, 40));
         JLabel aLabel = new JLabel("<html>FreeCell<br> v" + version + "</html>", icon, JLabel.LEFT);
-        JLabel bLabel = new JLabel("<html>\u00a9 2016-17 Sateesh Chandra G<br>All rights reserved.</html>");
+        JLabel bLabel = new JLabel("<html>\u00a9 2016-17 Sateesh Chandra G<br>Todos os direitos reservados.</html>");
         JPanel panel = new JPanel(new GridLayout(2, 1));
         panel.add(aLabel);
         panel.add(bLabel);
-        showMessageDialog(this, panel, "About FreeCell", PLAIN_MESSAGE);
+        showMessageDialog(this, panel, "Sobre", PLAIN_MESSAGE);
     }
     
     
     //Criado tela de Ajuda
     public void showHelp() {
         JLabel aLabel = new JLabel("<html>Objetivo<br>O objetivo do FreeCell é criar quatro pilhas de cartas <br>nas bases do canto superior direito. Cada pilha deve ser <br>criada da menor à maior carta de cada naipe. </html>");
-        JLabel bLabel = new JLabel("<html>\u00a9 2016-17 Sateesh Chandra G<br>All rights reserved.</html>");
+        JLabel bLabel = new JLabel("<html>\u00a9 2016-17 Sateesh Chandra G<br>Todos os direitos reservados.</html>");
         JPanel panel = new JPanel(new GridLayout(2, 1));
         panel.add(aLabel);
         panel.add(bLabel);
@@ -229,11 +229,11 @@ public class UIFreeCell extends JFrame {
         try {
             socket = new ServerSocket(PORT, 0, InetAddress.getByAddress(new byte[] { 127, 0, 0, 1 }));
         } catch (BindException e) {
-            System.err.println("Found another JFreeCell instance is running.");
-            showMessageDialog(null, "Looks like another instance of Freecell is already running.", "Alert", ERROR_MESSAGE);
+            System.err.println("Encontrado outra instancia do jogo já em funcionamento");
+            showMessageDialog(null, "Verifique se ja possui uma instância do jogo aberta.", "Alerta", ERROR_MESSAGE);
             System.exit(0);
         } catch (IOException e) {
-            System.err.println("Unexpected error.");
+            System.err.println("Erro inesperado");
             e.printStackTrace();
             System.exit(2);
         }

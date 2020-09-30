@@ -25,14 +25,14 @@ public class MenuActionListener implements ActionListener {
 	private UIFreeCell frame;
     
     public static class MenuAction {
-        public static final String NEW = "New Game";
-        public static final String SELECT = "Select Game";
-        public static final String RESTART = "Restart Game";
-        public static final String UNDO = "Undo Step";
-        public static final String HINT = "Hint";
-        public static final String HELP = "JFree Cell Help";
-        public static final String ABOUT = "About FreeCell";
-        public static final String EXIT = "Exit";
+        public static final String NEW = "Novo jogo";
+        public static final String SELECT = "Selecione o jogo";
+        public static final String RESTART = "Resetar partida";
+        public static final String UNDO = "Desfazer movimento";
+        public static final String HINT = "Dica";
+        public static final String HELP = "JFree Cell Ajuda";
+        public static final String ABOUT = "Sobre";
+        public static final String EXIT = "Sair";
    } 
 
     public MenuActionListener(UIFreeCell frame) {
