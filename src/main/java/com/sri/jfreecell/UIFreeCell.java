@@ -78,7 +78,7 @@ public class UIFreeCell extends JFrame {
 
     private UICardPanel boardDisplay;
     private JLabel cardCount;
-    public JLabel numeroJogadas;
+    private JLabel numeroJogadas;
 
     private static final int PORT = 6789;
     private static ServerSocket socket;
@@ -107,12 +107,12 @@ public class UIFreeCell extends JFrame {
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         controlPanel.add(new JLabel("Cards Left:"));
         controlPanel.add(cardCount);
-
+        
         numeroJogadas = new JLabel("0", SwingConstants.LEFT);
         JPanel controlPanel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         controlPanel1.add(new JLabel("Numero Jogadas:"));
         controlPanel1.add(numeroJogadas);
-        
+
         JPanel content = new JPanel();
         content.setLayout(new BorderLayout());
         content.add(controlPanel, BorderLayout.SOUTH);
@@ -172,12 +172,12 @@ public class UIFreeCell extends JFrame {
         return menuItem;
     }
 
-    public void updateNumeroJogadas(int count) {
-        numeroJogadas.setText(count + " ");
-    }
-    
     public void updateCardCount(int count) {
         cardCount.setText(count + " ");
+    }
+    
+    public void updateNumeroJogadas(int count) {
+        numeroJogadas.setText(count + " ");
     }
 
     public void loadRandGame() {
