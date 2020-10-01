@@ -72,8 +72,8 @@ public class GameListenerImpl implements GameListener {
     }
 
     private void noMovesLeft() {
-        String[] buttons = { "Restart", "New game", "Undo Last Move" };
-        int input = showOptionDialog(frame, "No more moves left !!!", "No Moves", YES_NO_OPTION, ERROR_MESSAGE, null, buttons,
+    	String[] buttons = { "Restart", "Novo Jogo", "Voltar um movimento" };
+        int input = showOptionDialog(frame, "Sem mais movimentos !!!", "Sem Movimentos", YES_NO_OPTION, ERROR_MESSAGE, null, buttons,
             buttons[0]);
 
         switch (input) {
