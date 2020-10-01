@@ -224,11 +224,6 @@ public class UIFreeCell extends JFrame {
     
     //Criado tela de Ajuda
     public void showHelp() {
-<<<<<<< HEAD
-        JLabel aLabel = new JLabel("<html>Objetivo<br>O objetivo do FreeCell é criar quatro pilhas de cartas <br>nas bases do canto superior direito. Cada pilha deve ser <br>criada da menor à maior carta de cada naipe. </html>");
-        JLabel bLabel = new JLabel("<html>\u00a9 2016-17 Sateesh Chandra G<br>Todos os direitos reservados.</html>");
-        JPanel panel = new JPanel(new GridLayout(2, 1));
-=======
     	String texto = "<html>Objetivo<br> - O objetivo do FreeCell é criar quatro pilhas de cartas nas bases do canto<br>superior direito.<br>"
     					+"- Cada pilha deve ser criada da menor à maior carta de cada naipe, portanto<br>devem começar por ases e terminar por reis.<br>"
     					+" - As cartas movidas para as pilhas bases não podem ser removidas.<br> - Na parte superior esquerda possui quatro espaços livres "
@@ -239,7 +234,6 @@ public class UIFreeCell extends JFrame {
     					+"espaços livres suficientes.</html>";
         JLabel aLabel = new JLabel(texto);
         JPanel panel = new JPanel(new GridLayout(1, 1));
->>>>>>> a33f23f0565a1925ad0bac5d99c5248e601960db
         panel.add(aLabel);
         showMessageDialog(this, panel, "Como jogar FreeCell", PLAIN_MESSAGE);
     }
