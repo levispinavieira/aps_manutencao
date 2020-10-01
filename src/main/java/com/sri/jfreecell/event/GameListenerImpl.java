@@ -46,6 +46,7 @@ public class GameListenerImpl implements GameListener {
 
     private void onMove(GameEvent ge) {
         frame.updateCardCount((int) ge.getValue());
+        frame.updateNumeroJogadas(ge.getNumeroJogadas());
         frame.repaint();
     }
 

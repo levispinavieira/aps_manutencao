@@ -41,6 +41,7 @@ public class GameModel implements Iterable<CardPile>, Serializable {
     private transient ArrayList<GameListener> gameListeners;
     private transient ArrayDeque<CardPile> undoStack;
 
+    private int numeroJogadas = -1;
     private int completedCards = 0;
     private int noOfAutoMoves = 0;
 
@@ -133,6 +134,7 @@ public class GameModel implements Iterable<CardPile>, Serializable {
 
         state = NEW;
         completedCards = 0;
+        numeroJogadas = 0;
         undoStack.clear();
         notifyChanges();
     }
@@ -151,6 +153,7 @@ public class GameModel implements Iterable<CardPile>, Serializable {
 
         state = NEW;
         completedCards = 0;
+        numeroJogadas = 0;
         undoStack.clear();
         notifyChanges();
     }
@@ -666,7 +669,7 @@ public class GameModel implements Iterable<CardPile>, Serializable {
     }
 
     public void notifyChanges() {
-        fireGameEvent(MOVE, 52 - completedCards);
+    	fireGameEvent(MOVE, 52 - completedCards, numeroJogadas);
     }
 
     public synchronized void addGameListener(GameListener l) {
@@ -677,15 +680,15 @@ public class GameModel implements Iterable<CardPile>, Serializable {
         gameListeners.remove(l);
     }
 
-    private synchronized void fireGameEvent(GameEvents eve, Object value) {
-        GameEvent event = new GameEvent(this, eve, value);
+    private synchronized void fireGameEvent(GameEvents eve, Object value, int numerojogadas) {
+        GameEvent event = new GameEvent(this, eve, value, numeroJogadas++);
         for (GameListener listener : gameListeners) {
             listener.onEvent(event);
         }
     }
 
     private void fireGameEvent(GameEvents eve) {
-        fireGameEvent(eve, null);
+    	fireGameEvent(eve, null, 0);
     }
 
     public Iterator<CardPile> iterator() {

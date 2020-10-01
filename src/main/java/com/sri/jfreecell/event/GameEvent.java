@@ -14,11 +14,13 @@ public class GameEvent extends EventObject {
     
     private GameEvents event;
     private Object value;
+    private int numeroJogadas;
 
-    public GameEvent(Object source, GameEvents event, Object value) {
+    public GameEvent(Object source, GameEvents event, Object value, int numeroJogada) {
         super(source);
         this.event = event;
         this.value = value;
+        this.numeroJogadas = numeroJogada;
     }
 
     public GameEvents getEvent() {
@@ -27,5 +29,9 @@ public class GameEvent extends EventObject {
     
     public Object getValue() {
         return this.value;
+    }
+    
+    public int getNumeroJogadas() {
+        return this.numeroJogadas;
     }
 }
