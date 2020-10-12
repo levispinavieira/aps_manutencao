@@ -103,20 +103,17 @@ public class UIFreeCell extends JFrame {
         boardDisplay = new UICardPanel(model);
         model.addGameListener(new GameListenerImpl(this));
 
+        numeroJogadas = new JLabel("0", SwingConstants.LEFT);
         cardCount = new JLabel("52 ", SwingConstants.RIGHT);
         JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         controlPanel.add(new JLabel("Cartas restantes:"));
         controlPanel.add(cardCount);
-        
-        numeroJogadas = new JLabel("0", SwingConstants.LEFT);
-        JPanel controlPanel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        controlPanel1.add(new JLabel("Numero Jogadas:"));
-        controlPanel1.add(numeroJogadas);
+        controlPanel.add(new JLabel("| Número Jogadas:"));
+        controlPanel.add(numeroJogadas);
 
         JPanel content = new JPanel();
         content.setLayout(new BorderLayout());
         content.add(controlPanel, BorderLayout.SOUTH);
-        content.add(controlPanel1, BorderLayout.EAST);
         content.add(boardDisplay, BorderLayout.CENTER);
 
         setContentPane(content);
