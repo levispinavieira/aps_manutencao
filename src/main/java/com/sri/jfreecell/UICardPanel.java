@@ -246,8 +246,7 @@ public class UICardPanel extends JComponent implements MouseListener, MouseMotio
             if (targetPile != null) {
                 isCardMoved = model.moveFromPileToPile(draggedCard, draggedFromPile, targetPile);
                 if (isCardMoved) {
-                    model.notifyChanges();
-                    model.validate();
+                	ValidateChange();
                 }
                 model.checkForAutoMoves();
             }
@@ -269,13 +268,17 @@ public class UICardPanel extends JComponent implements MouseListener, MouseMotio
                     isCardMoved = model.moveToFreeCellPile(highlightedPile);
                 }
                 if (isCardMoved) {
-                    model.notifyChanges();
-                    model.validate();
+                	ValidateChange();
                     _clearHighlight();
                 }
                 model.checkForAutoMoves();
             }
         }
+    }
+    
+    private void ValidateChange() {
+        model.notifyChanges();
+        model.validate();
     }
 
     private boolean _findFocusCard(MouseEvent e) {
