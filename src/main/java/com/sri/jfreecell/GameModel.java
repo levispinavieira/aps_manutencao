@@ -131,12 +131,9 @@ public class GameModel implements Iterable<CardPile>, Serializable {
         for (int i = 0; i < tableau.length; i++) {
             ((CardPileTableau) tableau[i]).updateCascades();
         }
+        
+        ResetarVariaveis();
 
-        state = NEW;
-        completedCards = 0;
-        numeroJogadas = 0;
-        undoStack.clear();
-        notifyChanges();
     }
 
     public void restartGame() {
@@ -150,13 +147,20 @@ public class GameModel implements Iterable<CardPile>, Serializable {
             }
             ((CardPileTableau) tableau[i]).updateCascades();
         }
+        
+        ResetarVariaveis();
 
-        state = NEW;
+    }
+    
+    public void ResetarVariaveis() {
+    	
+    	state = NEW;
         completedCards = 0;
         numeroJogadas = 0;
         undoStack.clear();
         notifyChanges();
     }
+    
 
     public boolean moveFromPileToPile(Card card, CardPile source, CardPile target) {
         if (card.equals(source.peekTop())) {
