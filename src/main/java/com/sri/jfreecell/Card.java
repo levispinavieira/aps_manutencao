@@ -202,7 +202,9 @@ public class Card implements Serializable {
      * @return true if given point is inside card image; false otherwise
      */
     public boolean isInside(int x, int y) {
-	return (x >= this.x && x < this.x + CARD_WIDTH) && (y >= this.y && y < this.y + CARD_HEIGHT);
+    	final boolean insideX = (x >= this.x && x < this.x + CARD_WIDTH);
+    	final boolean insideY = (y >= this.y && y < this.y + CARD_HEIGHT);
+    	return insideX && insideY;
     }
 
     /**
@@ -213,7 +215,11 @@ public class Card implements Serializable {
      * @return true if given point is inside visible card image; false otherwise
      */
     public boolean isVisibleInside(int x, int y, boolean isTopCard) {
-	return (x >= this.x && x < this.x + CARD_WIDTH) && (y >= this.y && (isTopCard ? y < this.y + CARD_HEIGHT : y < this.y + 15));
+    	final boolean isInsideX = (x >= this.x && x < this.x + CARD_WIDTH);
+    	final boolean isIfY = (isTopCard ? y < this.y + CARD_HEIGHT : y < this.y + 15);
+    	final boolean isInsideY = (y >= this.y && isIfY);
+    
+    	return isInsideX && isInsideY;
     }
 
     /**
@@ -222,7 +228,7 @@ public class Card implements Serializable {
      * @return face
      */
     public Face getFace() {
-	return face;
+    	return face;
     }
 
     /**
@@ -231,15 +237,15 @@ public class Card implements Serializable {
      * @return suit
      */
     public Suit getSuit() {
-	return suit;
+    	return suit;
     }
 
     public int getX() {
-	return x;
+    	return x;
     }
 
     public int getY() {
-	return y;
+    	return y;
     }
 
     public void setX(int x) {
