@@ -51,15 +51,15 @@ public class GameListenerImpl implements GameListener {
     }
 
     private void gameComplete() {
-        JLabel aLabel = new JLabel("Congratulations, You Win!");
-        JLabel bLabel = new JLabel("Do you want to play again?");
-        JCheckBox cCheck = new JCheckBox("Select game");
+        JLabel aLabel = new JLabel("Parabéns, você venceu");
+        JLabel bLabel = new JLabel("Deseja jogar novamente?");
+        JCheckBox cCheck = new JCheckBox("Selecione um jogo");
         JPanel panel = new JPanel(new GridLayout(3, 1));
         panel.add(aLabel);
         panel.add(bLabel);
         panel.add(cCheck);
 
-        int input = showOptionDialog(frame, panel, "Game Over", YES_NO_OPTION, INFORMATION_MESSAGE, null, null, null);
+        int input = showOptionDialog(frame, panel, "Fim de Jogo", YES_NO_OPTION, INFORMATION_MESSAGE, null, null, null);
         if (input == 0) {
             if (cCheck.isSelected()) {
                 frame.selectGame();
