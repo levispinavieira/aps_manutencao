@@ -21,13 +21,9 @@ public class CardPileFoundation extends CardPile {
 	    return true;
 	}
 	// Accept if face value is one higher and it's the same color.
-	if (size() > 0) {
+	if (size() == 0) return false;
 	    Card top = peekTop();
-	    if ((top.getSuit() == card.getSuit() && (top.getFace().ordinal() + 1 == card.getFace().ordinal()))) {
-		return true;
-	    }
-	}
-	return false;
+		return (top.getSuit() == card.getSuit() && (top.getFace().ordinal() + 1 == card.getFace().ordinal()));
     }
 
     @Override
