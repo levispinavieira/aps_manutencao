@@ -199,10 +199,10 @@ public class GameModel implements Iterable<CardPile>, Serializable {
                 c = pile.peekTop();
                 ord = c.getFace().ordinal();
                 if (c.getSuit().getColor().equals(Color.RED)) {
-                    if (ord > minval[0] && ord > 1)
+                    if (validarAutoMovimento(ord, minval[0]))
                         continue;
                 } else {
-                    if (ord > minval[1] && ord > 1)
+                    if (validarAutoMovimento(ord, minval[1]))
                         continue;
                 }
                 if (moveToFoundationPile(pile)) {
@@ -218,10 +218,10 @@ public class GameModel implements Iterable<CardPile>, Serializable {
                 c = pile.peekTop();
                 ord = c.getFace().ordinal();
                 if (c.getSuit().getColor().equals(Color.RED)) {
-                    if (ord > minval[0] && ord > 1)
+                    if (validarAutoMovimento(ord, minval[0]))
                         continue;
                 } else {
-                    if (ord > minval[1] && ord > 1)
+                    if (validarAutoMovimento(ord, minval[1]))
                         continue;
                 }
                 if (moveToFoundationPile(pile)) {
@@ -238,6 +238,12 @@ public class GameModel implements Iterable<CardPile>, Serializable {
         return;
     }
 
+    private boolean validarAutoMovimento(int ord, int minval) {
+        if (ord > minval && ord > 1)
+        	return true;
+        return false;
+    }
+    
     /**
      * Returns minimum valued card (Black & Red) that can be moved automatically
      * to Foundation pile. E.g., If we need to move 6 of Spade (Black) then
